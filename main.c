@@ -52,7 +52,7 @@ void error_check(char **args)
     long n;
     long m;
 
-    //split でmalloc が失敗してreturn NULl　check 
+    //split でmalloc が失敗してreturn NULl　check
     if (!args || !args[0])
         error_exit();
     i = 0;
@@ -79,23 +79,84 @@ void error_check(char **args)
     }
 }
 
-int main(int argc, char **argv)
+size_t stack_size(t_stack *stack)
 {
-    char **args;
+	t_stack *current;
+	size_t size;
 
-	if (argc < 2)
-       return 0;
-    //入力するときに"2 3 1" だったとき
-    if (ft_strchr(argv[1], ' '))
-        args = ft_split(argv[1], ' ');
-    //入力するときに2 3 1　だったとき
-    else
-        args = &argv[1];
-    //error handling        
-    error_check(args);
-
-    coordinate_comp()
-        
-    return 0;
+	size = 1;
+	current = stack->next;
+	while (current != stack)
+	{
+		current = stack->next;
+		size++ ;
+	}
+	return (size);
 }
 
+calc_disorder(t_stack *a)
+{
+	size_t i;
+	size_t j;
+	size_t total_pairs;
+	size_t mistakes;
+
+	size = stack_size(a);
+	i = 0;
+	while(i < size - 1)
+	{
+		j = i + 1;
+		while(j < size - 1)
+		{
+			total_pairs++ ;
+			if ()
+		}
+	}
+}
+
+int main(int argc, char **argv)
+{
+	int		i;
+	int		bench;
+	char	**args;
+
+	if (argc < 2)
+		return (0);
+	i = 1;
+	bench = 0;
+	while (i < argc)
+	{
+		if (ft_strcmp(argv[i], "--bench") == 0)
+			bench = 1;
+		else if (ft_strcmp(argv[i], "--medium") == 0)
+			; // flag on
+		else if (ft_strcmp(argv[i], "--complex") == 0)
+			; // flag on
+		else if (ft_strcmp(argv[i], "--adaptive") == 0)
+			; // flag on
+		else
+			break ;
+		i++ ;
+	}
+	if (i >= argc)
+		error_exit();
+	if (ft_strchr(argv[i], ' '))
+		args = ft_split(argv[i], ' ');
+	else
+		args = &argv[i];
+	error_check(args);
+	init_stack(args);
+	/*
+		disorder はここ
+		座圧もここらへん
+		sort
+	*/
+	if (bench)
+	{
+		/*
+			bench表示
+		*/
+	}
+
+	return (0);
+}

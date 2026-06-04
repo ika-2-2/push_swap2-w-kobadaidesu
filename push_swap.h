@@ -1,10 +1,17 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+
 # include "libft/libft.h"
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_bench
+{
+	int total;
+	int count[OP_COUNT];
+}	t_bench
 
 typedef struct s_stack
 {
