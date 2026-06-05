@@ -15,8 +15,8 @@ typedef struct s_bench
 
 typedef struct s_stack
 {
-	int value;
-    int index;
+	int				value;
+	int				index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
@@ -24,5 +24,6 @@ typedef struct s_stack
 void				error_exit(void);
 long				ft_atol(char *str);
 void				error_check(char **args);
+t_stack				*init_stack(char **args);
 
 #endif
