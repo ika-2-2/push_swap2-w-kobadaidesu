@@ -36,33 +36,38 @@ static void	stack_add_back(t_stack **stack, t_stack *new)
 		return ;
 	if (!*stack)
 	{
+		new->next = new;
+		new->prev = new;
 		*stack = new;
 		return ;
 	}
-	last = *stack;
-	while (last->next)
-		last = last->next;
+	last = (*stack)->prev;
 	last->next = new;
 	new->prev = last;
+	new->next = *stack;
+	(*stack)->prev = new;
 }
+
 
 // malloc失敗したときに全freeする関数
 static void	all_free(t_stack **stack_a)
 {
+	t_stack	*start;
 	t_stack	*current;
 	t_stack	*nextone;
 
 	if (!stack_a || !*stack_a)
 		return ;
-	current = *stack_a;
-	while (current)
+	start = *stack_a;
+	current = start->next;
+	while (current != start)
 	{
 		nextone = current->next;
 		free(current);
 		current = nextone;
 	}
+	free(start);
 	*stack_a = NULL;
-	return ;
 }
 
 t_stack	*init_stack(char **args)
@@ -77,7 +82,10 @@ t_stack	*init_stack(char **args)
 	{
 		new_node = stack_new((int)ft_atol(args[i]));
 		if (!new_node)
+		{
 			all_free(&stack_a);
+			error_exit();
+		}
 		stack_add_back(&stack_a, new_node);
 		i++;
 	}

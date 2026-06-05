@@ -12,25 +12,30 @@
 
 #include "push_swap.h"
 
-// 座標圧縮
-int	*coordinate_comp(t_stack *stack_a)
+void	coordinate_compress(t_stack *stack)
 {
-	t_stack	*current_a;
-	t_stack	*current_b;
-	int		cnt;
+	t_stack	*current;
+	t_stack	*compare;
+	int		index;
 
-	current_a = stack_a;
-	while (current_a)
+	if (!stack)
+		return ;
+	current = stack;
+	while (1)
 	{
-		cnt = 0;
-		current_b = stack_a;
-		while (current_b)
+		index = 0;
+		compare = stack;
+		while (1)
 		{
-			if (current_a->value > current_b->value)
-				cnt++;
-			current_b = current_b->next;
+			if (current->value > compare->value)
+				index++;
+			compare = compare->next;
+			if (compare == stack)
+				break ;
 		}
-		current_a->index = cnt;
-		current_a = current_a->next;
+		current->index = index;
+		current = current->next;
+		if (current == stack)
+			break ;
 	}
 }
