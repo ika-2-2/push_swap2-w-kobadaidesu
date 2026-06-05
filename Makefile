@@ -4,7 +4,15 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
 
-SRCS = main.c
+SRCS = daigo_main.c \
+	config.c \
+	parse.c \
+	error.c \
+	stack.c \
+	compression.c \
+	disorder.c \
+	bench_names.c \
+	bench_print.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(LIBFT) $(NAME)
