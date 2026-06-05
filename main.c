@@ -82,9 +82,15 @@ void	error_check(char **args)
 int	main(int argc, char **argv)
 {
 	char	**args;
+    t_stack *stack_a;
+    t_stack *stack_b;
 
 	if (argc < 2)
 		return (0);
+
+	stack_a = NULL;
+	stack_b = NULL;
+
 	//入力するときに"2 3 1" だったとき
 	if (ft_strchr(argv[1], ' '))
 		args = ft_split(argv[1], ' ');
@@ -94,8 +100,8 @@ int	main(int argc, char **argv)
 	// error handling
 	error_check(args);
 	// スタックに数字をいれていく
-	init_stack(args);
-	// TODO: 座標圧縮
-	coordinate_comp();
+	stack_a = init_stack(args);
+	// 座標圧縮
+	coordinate_comp(stack_a);
 	return (0);
 }
