@@ -2,21 +2,21 @@
 
 int	main(int argc, char **argv)
 {
-	t_config	config;
+	t_context	ctx;
 	char		**args;
 
 	if (argc < 2)
 		return (0);
-	init_config(&config);
-	argv = skip_options(argv + 1, &config);
+	init_context(&ctx);
+	argv = skip_options(argv + 1, &ctx);
 	args = get_number_args(argv);
 	error_check(args);
-	config.stack_a = init_stack(args);
-	coordinate_compress(config.stack_a);
-	config.disorder = calc_disorder(config.stack_a);
-	sort_by_strategy(&config);
-	if (config.bench.flag)
-		print_bench(&config);
+	ctx.stack_a = init_stack(args);
+	coordinate_compress(ctx.stack_a);
+	ctx.disorder = calc_disorder(ctx.stack_a);
+	sort_by_strategy(&ctx);
+	if (ctx.bench.flag)
+		print_bench(&ctx);
 	free_number_args(args, argv);
 	return (0);
 }

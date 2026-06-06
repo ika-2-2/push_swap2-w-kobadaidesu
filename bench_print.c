@@ -39,17 +39,17 @@ static void	print_percent(double value)
 	write(2, "%\n", 2);
 }
 
-void	print_bench(t_config *config)
+void	print_bench(t_context *ctx)
 {
 	putstr_err("[bench] disorder: ");
-	print_percent(config->disorder);
+	print_percent(ctx->disorder);
 	putstr_err("[bench] strategy: ");
-	putstr_err(strategy_name(config->strategy));
+	putstr_err(strategy_name(ctx->strategy));
 	putstr_err(" (");
-	putstr_err(strategy_complexity(config->strategy));
+	putstr_err(strategy_complexity(ctx->strategy));
 	putstr_err(")\n");
 	putstr_err("[bench] total: ");
-	putnbr_err(config->bench.total);
+	putnbr_err(ctx->bench.total);
 	write(2, "\n", 1);
 	/*
 		操作のカウントはまた捜査の関数を書いてから考える
