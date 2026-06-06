@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
 
 SRCS = daigo_main.c \
-	config.c \
+	context.c \
 	parse.c \
 	error.c \
 	stack.c \
