@@ -67,6 +67,8 @@ double				calc_disorder(t_stack *a);
 t_stack				*init_stack(char **args);
 void				coordinate_compress(t_stack *stack);
 void				sort_by_strategy(t_context *ctx);
+void				sort_simple(t_context *ctx);
+void				sort_small(t_context *ctx);
 const char			*strategy_name(t_strategy strategy);
 const char			*strategy_complexity(t_strategy strategy);
 void				print_bench(t_context *ctx);
