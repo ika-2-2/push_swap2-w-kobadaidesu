@@ -46,30 +46,30 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
-typedef struct s_config
+typedef struct s_context
 {
 	t_stack		*stack_a;
 	t_stack		*stack_b;
 	t_bench		bench;
 	t_strategy	strategy;
 	double		disorder;
-}	t_config;
+}	t_context;
 
 void				error_exit(void);
 long				ft_atol(char *str);
 void				error_check(char **args);
-void				init_config(t_config *config);
-char				**skip_options(char **argv, t_config *config);
+void				init_context(t_context *ctx);
+char				**skip_options(char **argv, t_context *ctx);
 char				**get_number_args(char **argv);
 void				free_number_args(char **args, char **argv);
 size_t				stack_size(t_stack *stack);
 double				calc_disorder(t_stack *a);
 t_stack				*init_stack(char **args);
 void				coordinate_compress(t_stack *stack);
-void				sort_by_strategy(t_config *config);
+void				sort_by_strategy(t_context *ctx);
 const char			*strategy_name(t_strategy strategy);
 const char			*strategy_complexity(t_strategy strategy);
-void				print_bench(t_config *config);
+void				print_bench(t_context *ctx);
 
 void				sa(t_stack **stack_a);
 void				sb(t_stack **stack_b);

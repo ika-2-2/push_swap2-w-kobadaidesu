@@ -15,13 +15,13 @@ static int	parse_strategy(char *arg, t_strategy *strategy)
 	return (1);
 }
 
-char	**skip_options(char **argv, t_config *config)
+char	**skip_options(char **argv, t_context *ctx)
 {
 	while (*argv)
 	{
 		if (ft_strcmp(*argv, "--bench") == 0)
-			config->bench.flag = 1;
-		else if (!parse_strategy(*argv, &config->strategy))
+			ctx->bench.flag = 1;
+		else if (!parse_strategy(*argv, &ctx->strategy))
 			break ;
 		argv++;
 	}
