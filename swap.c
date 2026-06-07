@@ -6,13 +6,15 @@
 /*   By: kasuzuki <kasuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:22:50 by kasuzuki          #+#    #+#             */
-/*   Updated: 2026/06/07 17:51:21 by kasuzuki         ###   ########.fr       */
+/*   Updated: 2026/06/07 18:11:45 by kasuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack **stack_a)
+// スタックaの一番上と二番目を入れ替える
+// flgはssの呼び出しかどうか判断
+void	sa(t_stack **stack_a, int flg)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -40,10 +42,11 @@ void	sa(t_stack **stack_a)
         last->next = second;
     }
 	*stack_a = second;
-	write(1, "sa\n", 3);
+    if (flg == 0)
+	    write(1, "sa\n", 3);
 }
 
-void	sb(t_stack **stack_b)
+void	sb(t_stack **stack_b, int flg)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -71,11 +74,12 @@ void	sb(t_stack **stack_b)
         last->next = second;
     }
 	*stack_b = second;
-	write(1, "sb\n", 3);
+    if (flg == 0)
+	    write(1, "sb\n", 3);
 }
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
-    sa(stack_a);
-    sb(stack_b);
+    sa(stack_a, 1);
+    sb(stack_b, 1);
 }
