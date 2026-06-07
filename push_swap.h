@@ -73,16 +73,16 @@ const char			*strategy_name(t_strategy strategy);
 const char			*strategy_complexity(t_strategy strategy);
 void				print_bench(t_context *ctx);
 
-void				sa(t_stack **stack_a);
-void				sb(t_stack **stack_b);
+void				sa(t_stack **stack_a, int flg);
+void				sb(t_stack **stack_b, int flg);
 void				ss(t_stack **stack_a, t_stack **stack_b);
 void				pa(t_stack **stack_a, t_stack **stack_b);
 void				pb(t_stack **stack_a, t_stack **stack_b);
-void				ra(t_stack **stack_a);
-void				rb(t_stack **stack_b);
+void				ra(t_stack **stack_a, int flg);
+void				rb(t_stack **stack_b, int flg);
 void				rr(t_stack **stack_a, t_stack **stack_b);
-void				rra(t_stack **stack_a);
-void				rrb(t_stack **stack_b);
+void				rra(t_stack **stack_a, int flg);
+void				rrb(t_stack **stack_b, int flg);
 void				rrr(t_stack **stack_a, t_stack **stack_b);
 
 #endif
