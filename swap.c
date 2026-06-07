@@ -6,7 +6,7 @@
 /*   By: kasuzuki <kasuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:22:50 by kasuzuki          #+#    #+#             */
-/*   Updated: 2026/06/07 19:13:17 by kasuzuki         ###   ########.fr       */
+/*   Updated: 2026/06/07 19:14:19 by kasuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	sa(t_stack **stack_a, int flg)
 		write(1, "sa\n", 3);
 }
 
+// スタックbの一番上と二番目を入れ替える
+// flgはssの呼び出しかどうか判断
 void	sb(t_stack **stack_b, int flg)
 {
 	t_stack	*first;
@@ -76,8 +78,10 @@ void	sb(t_stack **stack_b, int flg)
 		write(1, "sb\n", 3);
 }
 
+// aとbどっちもswap実行
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	sa(stack_a, 1);
 	sb(stack_b, 1);
+    write(1, "ss\n", 3);
 }

@@ -25,3 +25,5 @@ sb
 とどっちも出てしまうため、ssで呼び出されたかどうか判定するためにフラグを追加↓
 
 `void sa(t_stack **stack_a, int flg)`
+
+rotate系、reverseもフラグ追加した

@@ -6,12 +6,13 @@
 /*   By: kasuzuki <kasuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:22:56 by kasuzuki          #+#    #+#             */
-/*   Updated: 2026/06/07 19:13:11 by kasuzuki         ###   ########.fr       */
+/*   Updated: 2026/06/07 19:19:05 by kasuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// 順番をローテート(繰り上げ)
 void	ra(t_stack **stack_a, int flg)
 {
 	if (!stack_a || !*stack_a)
@@ -30,6 +31,7 @@ void	rb(t_stack **stack_b, int flg)
 		write(1, "rb\n", 3);
 }
 
+// 両方
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	ra(stack_a, 1);

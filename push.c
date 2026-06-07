@@ -6,12 +6,13 @@
 /*   By: kasuzuki <kasuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 18:35:34 by kasuzuki          #+#    #+#             */
-/*   Updated: 2026/06/07 18:53:39 by kasuzuki         ###   ########.fr       */
+/*   Updated: 2026/06/07 19:15:29 by kasuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// bの一番上をaの一番上に移動
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*push_node;
@@ -48,6 +49,7 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 	write(1, "pa\n", 3);
 }
 
+// aの一番上をbの一番上に移動
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*push_node;
