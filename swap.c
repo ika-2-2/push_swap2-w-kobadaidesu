@@ -6,12 +6,13 @@
 /*   By: kasuzuki <kasuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 20:22:50 by kasuzuki          #+#    #+#             */
-/*   Updated: 2026/06/07 21:24:15 by kasuzuki         ###   ########.fr       */
+/*   Updated: 2026/06/07 21:39:51 by kasuzuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// 入れ替える関数
 static void swap_node(t_stack **stack)
 {
 	t_stack *first;
@@ -49,8 +50,6 @@ void	sa(t_stack **stack_a, int flg)
 		write(1, "sa\n", 3);
 }
 
-// スタックbの一番上と二番目を入れ替える
-// flgはssの呼び出しかどうか判断
 void	sb(t_stack **stack_b, int flg)
 {
 	if (!stack_b || !*stack_b || (*stack_b)->next == *stack_b)
