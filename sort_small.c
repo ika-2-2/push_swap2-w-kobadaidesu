@@ -6,7 +6,7 @@ static void	sort_two(t_context *ctx)
 
 	a = ctx->stack_a;
 	if (a->index > a->next->index)
-		sa(&ctx->stack_a);
+		sa(&ctx->stack_a, 0);
 }
 
 static void	sort_three(t_context *ctx)
@@ -19,73 +19,21 @@ static void	sort_three(t_context *ctx)
 	mid = ctx->stack_a->next->index;
 	bot = ctx->stack_a->prev->index;
 	if (top > mid && mid < bot && top < bot)
-		sa(&ctx->stack_a);
+		sa(&ctx->stack_a, 0);
 	else if (top > mid && mid > bot)
 	{
-		sa(&ctx->stack_a);
-		rra(&ctx->stack_a);
+		sa(&ctx->stack_a, 0);
+		rra(&ctx->stack_a, 0);
 	}
 	else if (top > mid && mid < bot && top > bot)
-		ra(&ctx->stack_a);
+		ra(&ctx->stack_a, 0);
 	else if (top < mid && mid > bot && top < bot)
 	{
-		sa(&ctx->stack_a);
-		ra(&ctx->stack_a);
+		sa(&ctx->stack_a, 0);
+		ra(&ctx->stack_a, 0);
 	}
 	else if (top < mid && mid > bot && top > bot)
-		rra(&ctx->stack_a);
-}
-
-static size_t	find_min_pos(t_stack *stack)
-{
-	int		min_index;
-	size_t	min_pos;
-	size_t	pos;
-	size_t	size;
-
-	min_index = stack->index;
-	min_pos = 0;
-	pos = 0;
-	size = stack_size(stack);
-	while (pos < size)
-	{
-		if (stack->index < min_index)
-		{
-			min_index = stack->index;
-			min_pos = pos;
-		}
-		stack = stack->next;
-		pos++;
-	}
-	return (min_pos);
-}
-
-static void	move_min_to_top(t_context *ctx)
-{
-	size_t	pos;
-	size_t	size;
-	size_t	rotations;
-
-	pos = find_min_pos(ctx->stack_a);
-	size = stack_size(ctx->stack_a);
-	if (pos <= size / 2)
-	{
-		rotations = pos;
-		while (rotations > 0)
-		{
-			ra(&ctx->stack_a);
-			rotations--;
-		}
-	}
-	else
-	{
-		rotations = size - pos;
-		while (rotations > 0)
-		{
-			rra(&ctx->stack_a);
-			rotations--;
-		}
-	}
+		rra(&ctx->stack_a, 0);
 }
 
 static void	sort_five(t_context *ctx)

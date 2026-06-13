@@ -11,12 +11,15 @@ SRCS = daigo_main.c \
 	stack.c \
 	compression.c \
 	disorder.c \
+	sort_simple.c \
+	sort_small.c \
+	sort_selection.c \
 	bench_names.c \
 	bench_print.c \
 	swap.c \
 	push.c \
 	rotate.c \
-	reverse_rotate.c
+	reverse_lotate.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(LIBFT) $(NAME)

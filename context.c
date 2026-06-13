@@ -24,9 +24,7 @@ void	sort_by_strategy(t_context *ctx)
 {
 	if (ctx->strategy == STRATEGY_SIMPLE)
 	{
-		/*
-			sort_simple(ctx);
-		*/
+		sort_simple(ctx);
 	}
 	else if (ctx->strategy == STRATEGY_MEDIUM)
 	{
