@@ -6,7 +6,7 @@ static void	sort_two(t_context *ctx)
 
 	a = ctx->stack_a;
 	if (a->index > a->next->index)
-		sa(&ctx->stack_a, 0);
+		op_sa(ctx);
 }
 
 static void	sort_three(t_context *ctx)
@@ -19,21 +19,21 @@ static void	sort_three(t_context *ctx)
 	mid = ctx->stack_a->next->index;
 	bot = ctx->stack_a->prev->index;
 	if (top > mid && mid < bot && top < bot)
-		sa(&ctx->stack_a, 0);
+		op_sa(ctx);
 	else if (top > mid && mid > bot)
 	{
-		sa(&ctx->stack_a, 0);
-		rra(&ctx->stack_a, 0);
+		op_sa(ctx);
+		op_rra(ctx);
 	}
 	else if (top > mid && mid < bot && top > bot)
-		ra(&ctx->stack_a, 0);
+		op_ra(ctx);
 	else if (top < mid && mid > bot && top < bot)
 	{
-		sa(&ctx->stack_a, 0);
-		ra(&ctx->stack_a, 0);
+		op_sa(ctx);
+		op_ra(ctx);
 	}
 	else if (top < mid && mid > bot && top > bot)
-		rra(&ctx->stack_a, 0);
+		op_rra(ctx);
 }
 
 static void	sort_five(t_context *ctx)
@@ -46,14 +46,14 @@ static void	sort_five(t_context *ctx)
 	while (size > 3)
 	{
 		move_min_to_top(ctx);
-		pb(&ctx->stack_a, &ctx->stack_b);
+		op_pb(ctx);
 		pushed++;
 		size--;
 	}
 	sort_three(ctx);
 	while (pushed > 0)
 	{
-		pa(&ctx->stack_a, &ctx->stack_b);
+		op_pa(ctx);
 		pushed--;
 	}
 }
