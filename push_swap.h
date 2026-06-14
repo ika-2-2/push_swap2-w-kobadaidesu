@@ -75,6 +75,23 @@ void				move_min_to_top(t_context *ctx);
 const char			*strategy_name(t_strategy strategy);
 const char			*strategy_complexity(t_strategy strategy);
 void				print_bench(t_context *ctx);
+void				bench_putstr_err(const char *str);
+void				bench_putnbr_err(int n);
+void				bench_print_percent(double value);
+void				bench_print_op_count(t_context *ctx, t_operation op,
+						const char *name);
+void				count_operation(t_context *ctx, t_operation op);
+void				op_sa(t_context *ctx);
+void				op_sb(t_context *ctx);
+void				op_ss(t_context *ctx);
+void				op_pa(t_context *ctx);
+void				op_pb(t_context *ctx);
+void				op_ra(t_context *ctx);
+void				op_rb(t_context *ctx);
+void				op_rr(t_context *ctx);
+void				op_rra(t_context *ctx);
+void				op_rrb(t_context *ctx);
+void				op_rrr(t_context *ctx);
 
 void				sa(t_stack **stack_a, int flg);
 void				sb(t_stack **stack_b, int flg);

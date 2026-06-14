@@ -3,12 +3,12 @@
 const char	*strategy_name(t_strategy strategy)
 {
 	if (strategy == STRATEGY_SIMPLE)
-		return ("simple");
+		return ("Simple");
 	if (strategy == STRATEGY_MEDIUM)
-		return ("medium");
+		return ("Medium");
 	if (strategy == STRATEGY_COMPLEX)
-		return ("complex");
-	return ("adaptive");
+		return ("Complex");
+	return ("Adaptive");
 }
 
 const char	*strategy_complexity(t_strategy strategy)
@@ -16,8 +16,8 @@ const char	*strategy_complexity(t_strategy strategy)
 	if (strategy == STRATEGY_SIMPLE)
 		return ("O(n^2)");
 	if (strategy == STRATEGY_MEDIUM)
-		return ("O(n sqrt n)");
+		return ("O(n√n)");
 	if (strategy == STRATEGY_COMPLEX)
 		return ("O(n log n)");
-	return ("adaptive");
+	return ("O(n√n)");
 }

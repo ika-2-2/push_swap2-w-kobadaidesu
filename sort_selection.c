@@ -5,9 +5,9 @@ void	sort_selection(t_context *ctx)
 	while (stack_size(ctx->stack_a) > 5)
 	{
 		move_min_to_top(ctx);
-		pb(&ctx->stack_a, &ctx->stack_b);
+		op_pb(ctx);
 	}
 	sort_small(ctx);
 	while (ctx->stack_b)
-		pa(&ctx->stack_a, &ctx->stack_b);
+		op_pa(ctx);
 }

@@ -37,7 +37,7 @@ void	move_min_to_top(t_context *ctx)
 		rotations = pos;
 		while (rotations > 0)
 		{
-			ra(&ctx->stack_a, 0);
+			op_ra(ctx);
 			rotations--;
 		}
 	}
@@ -46,7 +46,7 @@ void	move_min_to_top(t_context *ctx)
 		rotations = size - pos;
 		while (rotations > 0)
 		{
-			rra(&ctx->stack_a, 0);
+			op_rra(ctx);
 			rotations--;
 		}
 	}

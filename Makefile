@@ -16,6 +16,12 @@ SRCS = daigo_main.c \
 	sort_selection.c \
 	bench_names.c \
 	bench_print.c \
+	bench_print_utils.c \
+	operation_count.c \
+	operation_push.c \
+	operation_swap.c \
+	operation_rotate.c \
+	operation_reverse_rotate.c \
 	swap.c \
 	push.c \
 	rotate.c \

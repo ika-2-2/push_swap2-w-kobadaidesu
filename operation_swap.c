@@ -1,0 +1,30 @@
+#include "push_swap.h"
+
+static int	can_swap(t_stack *stack)
+{
+	return (stack && stack->next != stack);
+}
+
+void	op_sa(t_context *ctx)
+{
+	if (!can_swap(ctx->stack_a))
+		return ;
+	sa(&ctx->stack_a, 0);
+	count_operation(ctx, OP_SA);
+}
+
+void	op_sb(t_context *ctx)
+{
+	if (!can_swap(ctx->stack_b))
+		return ;
+	sb(&ctx->stack_b, 0);
+	count_operation(ctx, OP_SB);
+}
+
+void	op_ss(t_context *ctx)
+{
+	if (!can_swap(ctx->stack_a) && !can_swap(ctx->stack_b))
+		return ;
+	ss(&ctx->stack_a, &ctx->stack_b);
+	count_operation(ctx, OP_SS);
+}
