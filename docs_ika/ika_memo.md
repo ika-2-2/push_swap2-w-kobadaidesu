@@ -27,3 +27,16 @@ sb
 `void sa(t_stack **stack_a, int flg)`
 
 rotate系、reverseもフラグ追加した
+
+## radix-sort(基数ソート)
+
+参考記事
+https://zenn.dev/kodyi/articles/3210f1b56c6aee
+
+基数ソートを可視化したもの
+https://algoful.com/Archive/Algorithm/RadixSort
+
+### やること
+1. Aスタックの一番上の要素のbitが1ならBスタックへ移動、0ならAスタックの一番下へ移動
+2. 1をすべての要素に対して行う
+3. Bスタックの要素を全てAスタックに戻す
