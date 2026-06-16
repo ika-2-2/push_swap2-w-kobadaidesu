@@ -32,9 +32,10 @@ void	rrb(t_stack **stack_b, int flg)
 }
 
 // どっちも
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b, int flg)
 {
 	rra(stack_a, 1);
 	rrb(stack_b, 1);
-	write(1, "rrr\n", 4);
+	if (flg == 0)
+		write(1, "rrr\n", 4);
 }
