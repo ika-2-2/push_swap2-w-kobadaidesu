@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_simple.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kasuzuki <kasuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/15 00:00:00 by kasuzuki          #+#    #+#             */
+/*   Updated: 2026/06/15 00:00:00 by kasuzuki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 size_t	find_min_pos(t_stack *stack)
@@ -26,30 +38,7 @@ size_t	find_min_pos(t_stack *stack)
 
 void	move_min_to_top(t_context *ctx)
 {
-	size_t	pos;
-	size_t	size;
-	size_t	rotations;
-
-	pos = find_min_pos(ctx->stack_a);
-	size = stack_size(ctx->stack_a);
-	if (pos <= size / 2)
-	{
-		rotations = pos;
-		while (rotations > 0)
-		{
-			op_ra(ctx);
-			rotations--;
-		}
-	}
-	else
-	{
-		rotations = size - pos;
-		while (rotations > 0)
-		{
-			op_rra(ctx);
-			rotations--;
-		}
-	}
+	move_a_pos_to_top(ctx, (int)find_min_pos(ctx->stack_a));
 }
 
 void	sort_simple(t_context *ctx)

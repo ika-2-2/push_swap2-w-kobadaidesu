@@ -21,7 +21,7 @@ void	op_rra(t_context *ctx)
 {
 	if (!can_rotate(ctx->stack_a))
 		return ;
-	rra(&ctx->stack_a, 0);
+	rra(&ctx->stack_a, ctx->bench.flag == 2);
 	count_operation(ctx, OP_RRA);
 }
 
@@ -29,7 +29,7 @@ void	op_rrb(t_context *ctx)
 {
 	if (!can_rotate(ctx->stack_b))
 		return ;
-	rrb(&ctx->stack_b, 0);
+	rrb(&ctx->stack_b, ctx->bench.flag == 2);
 	count_operation(ctx, OP_RRB);
 }
 
@@ -37,6 +37,6 @@ void	op_rrr(t_context *ctx)
 {
 	if (!can_rotate(ctx->stack_a) && !can_rotate(ctx->stack_b))
 		return ;
-	rrr(&ctx->stack_a, &ctx->stack_b, 0);
+	rrr(&ctx->stack_a, &ctx->stack_b, ctx->bench.flag == 2);
 	count_operation(ctx, OP_RRR);
 }
