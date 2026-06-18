@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operation_reverse_rotate.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dakobaya <dakobaya@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/16 00:00:00 by dakobaya          #+#    #+#             */
+/*   Updated: 2026/06/16 00:00:00 by dakobaya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	can_rotate(t_stack *stack)
@@ -25,6 +37,6 @@ void	op_rrr(t_context *ctx)
 {
 	if (!can_rotate(ctx->stack_a) && !can_rotate(ctx->stack_b))
 		return ;
-	rrr(&ctx->stack_a, &ctx->stack_b);
+	rrr(&ctx->stack_a, &ctx->stack_b, 0);
 	count_operation(ctx, OP_RRR);
 }
