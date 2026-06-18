@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   context.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dakobaya <dakobaya@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/18 23:44:06 by dakobaya          #+#    #+#             */
+/*   Updated: 2026/06/18 23:44:07 by dakobaya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	init_context(t_context *ctx)
@@ -28,9 +40,7 @@ void	sort_by_strategy(t_context *ctx)
 	}
 	else if (ctx->strategy == STRATEGY_MEDIUM)
 	{
-		/*
-			sort_medium(ctx);
-		*/
+		sort_medium(ctx);
 	}
 	else if (ctx->strategy == STRATEGY_COMPLEX)
 	{
@@ -38,8 +48,6 @@ void	sort_by_strategy(t_context *ctx)
 	}
 	else
 	{
-		/*
-			sort_adaptive(ctx);
-		*/
+		return ;
 	}
 }
