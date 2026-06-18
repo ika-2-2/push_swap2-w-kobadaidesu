@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include <stdio.h>
+
 // debug
 void	print_stack(t_stack *stack)
 {
@@ -25,9 +26,7 @@ void	print_stack(t_stack *stack)
 	cur = stack;
 	do
 	{
-		printf("%d(%d) ",
-			cur->value,
-			cur->index);
+		printf("%d(%d) ", cur->value, cur->index);
 		cur = cur->next;
 	}
 	while (cur != stack);
@@ -42,13 +41,13 @@ static void	radix_check(t_stack **stack_a, t_stack **stack_b, int size, int bit)
 	while (i < size)
 	{
 		if ((((*stack_a)->index >> bit) & 1) == 0)
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, 0);
 		else
 			ra(stack_a, 0);
 		i++;
 	}
 	while (*stack_b)
-        pa(stack_a, stack_b);
+		pa(stack_a, stack_b, 0);
 }
 
 static int	node_cnt(t_stack **stack_a)
@@ -72,18 +71,14 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	bit;
 	int	size;
-    int max_index;
+	int	max_index;
 
-    size = node_cnt(stack_a);
-    bit = 0;
-    max_index = size - 1;
-    while ((max_index >> bit) != 0)
-    {
-        printf("before bit = %d\n", bit);
-        print_stack(*stack_a);
-        radix_check(stack_a, stack_b, size, bit);
-        bit++;
-        printf("after bit = %d\n", bit);
-        print_stack(*stack_a);
-    }
+	size = node_cnt(stack_a);
+	bit = 0;
+	max_index = size - 1;
+	while ((max_index >> bit) != 0)
+	{
+		radix_check(stack_a, stack_b, size, bit);
+		bit++;
+	}
 }
