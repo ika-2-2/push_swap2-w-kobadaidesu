@@ -6,13 +6,13 @@
 /*   By: ika_eater <ika_eater@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 20:56:05 by ika_eater         #+#    #+#             */
-/*   Updated: 2026/06/18 20:13:54 by ika_eater        ###   ########.fr       */
+/*   Updated: 2026/06/18 22:17:35 by ika_eater        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	radix_check(t_stack **stack_a, t_stack **stack_b, int size, int bit)
+static void	radix_check(t_stack **stack_a, t_stack **stack_b, int size, int bit)
 {
 	int	i;
 
@@ -29,16 +29,16 @@ void	radix_check(t_stack **stack_a, t_stack **stack_b, int size, int bit)
         pa(stack_a, stack_b);
 }
 
-int	stack_size(t_stack **stack_a)
+static int	stack_size(t_stack **stack_a)
 {
 	t_stack	*a;
 	int		size;
 
-	if (!stack_a)
+	if (!stack_a || !*stack_a)
 		return (0);
 	a = (*stack_a)->next;
 	size = 0;
-	while (a != stack_a)
+	while (a != *stack_a)
 	{
 		size++;
 		a = a->next;
@@ -54,7 +54,7 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 
     size = stack_size(stack_a);
     bit = 0;
-    max_index - size - 1;
+    max_index = size - 1;
     while ((max_index >> bit) != 0)
     {
         radix_check(stack_a, stack_b, size, bit);
