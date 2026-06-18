@@ -27,13 +27,8 @@ int	main(int argc, char **argv)
 	coordinate_compress(ctx.stack_a);
 	ctx.disorder = calc_disorder(ctx.stack_a);
 	sort_by_strategy(&ctx);
-	if (ctx.bench.flag == 1)
+	if (ctx.bench.flag)
 		print_bench(&ctx);
-	else if (ctx.bench.flag == 2)
-	{
-		ft_putnbr_fd(ctx.bench.total, 1);
-		write(1, "\n", 1);
-	}
 	stack_clear(&ctx.stack_a);
 	stack_clear(&ctx.stack_b);
 	free_number_args(args, argv);
