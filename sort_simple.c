@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kasuzuki <kasuzuki@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: dakobaya <dakobaya@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/15 00:00:00 by kasuzuki          #+#    #+#             */
-/*   Updated: 2026/06/15 00:00:00 by kasuzuki         ###   ########.fr       */
+/*   Created: 2026/06/18 23:44:26 by dakobaya          #+#    #+#             */
+/*   Updated: 2026/06/18 23:44:26 by dakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
