@@ -12,30 +12,28 @@
 
 #include "push_swap.h"
 
-// 入れ替える関数
-static void swap_node(t_stack **stack)
+static void	swap_node(t_stack **stack)
 {
-	t_stack *first;
-	t_stack *second;
-	t_stack *last;
-	
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
+	t_stack	*last;
+
 	first = *stack;
 	second = first->next;
+	if (second->next == first)
+	{
+		*stack = second;
+		return ;
+	}
+	third = second->next;
 	last = first->prev;
-	first->next = second->next;
-	second->next->prev = first;
+	last->next = second;
+	second->prev = last;
 	second->next = first;
 	first->prev = second;
-	if (second->next == second->prev)
-	{
-		first->next = second;
-		second->prev = first;
-	}
-	else
-	{
-		second->prev = last;
-		last->next = second;
-	}
+	first->next = third;
+	third->prev = first;
 	*stack = second;
 }
 
@@ -60,9 +58,10 @@ void	sb(t_stack **stack_b, int flg)
 }
 
 // aとbどっちもswap実行
-void	ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b, int flg)
 {
 	sa(stack_a, 1);
 	sb(stack_b, 1);
-    write(1, "ss\n", 3);
+	if (flg == 0)
+		write(1, "ss\n", 3);
 }

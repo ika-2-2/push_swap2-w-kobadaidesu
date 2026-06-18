@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-// 新しいスタック作成
 static t_stack	*stack_new(int value)
 {
 	t_stack	*new_node;
@@ -27,7 +26,6 @@ static t_stack	*stack_new(int value)
 	return (new_node);
 }
 
-// 最後尾にノードを作る
 static void	stack_add_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
@@ -48,26 +46,24 @@ static void	stack_add_back(t_stack **stack, t_stack *new)
 	(*stack)->prev = new;
 }
 
-
-// malloc失敗したときに全freeする関数
-static void	all_free(t_stack **stack_a)
+void	stack_clear(t_stack **stack)
 {
 	t_stack	*start;
 	t_stack	*current;
-	t_stack	*nextone;
+	t_stack	*next;
 
-	if (!stack_a || !*stack_a)
+	if (!stack || !*stack)
 		return ;
-	start = *stack_a;
+	start = *stack;
 	current = start->next;
 	while (current != start)
 	{
-		nextone = current->next;
+		next = current->next;
 		free(current);
-		current = nextone;
+		current = next;
 	}
 	free(start);
-	*stack_a = NULL;
+	*stack = NULL;
 }
 
 t_stack	*init_stack(char **args)
@@ -83,11 +79,27 @@ t_stack	*init_stack(char **args)
 		new_node = stack_new((int)ft_atol(args[i]));
 		if (!new_node)
 		{
-			all_free(&stack_a);
+			stack_clear(&stack_a);
 			error_exit();
 		}
 		stack_add_back(&stack_a, new_node);
 		i++;
 	}
 	return (stack_a);
+}
+
+int	stack_is_sorted(t_stack *stack)
+{
+	t_stack	*current;
+
+	if (!stack)
+		return (1);
+	current = stack;
+	while (current->next != stack)
+	{
+		if (current->index > current->next->index)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }

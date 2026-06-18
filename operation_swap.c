@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operation_swap.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dakobaya <dakobaya@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/16 00:00:00 by dakobaya          #+#    #+#             */
+/*   Updated: 2026/06/16 15:46:08 by dakobaya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	can_swap(t_stack *stack)
@@ -25,6 +37,6 @@ void	op_ss(t_context *ctx)
 {
 	if (!can_swap(ctx->stack_a) && !can_swap(ctx->stack_b))
 		return ;
-	ss(&ctx->stack_a, &ctx->stack_b);
+	ss(&ctx->stack_a, &ctx->stack_b, 0);
 	count_operation(ctx, OP_SS);
 }

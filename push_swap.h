@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ika_eater <ika_eater@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/16 00:00:00 by dakobaya          #+#    #+#             */
+/*   Updated: 2026/06/18 23:00:22 by ika_eater        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
 
 # include "libft/libft.h"
 # include <limits.h>
@@ -57,6 +68,7 @@ typedef struct s_context
 
 void				error_exit(void);
 long				ft_atol(char *str);
+int					has_arg_error(char **args);
 void				error_check(char **args);
 void				init_context(t_context *ctx);
 char				**skip_options(char **argv, t_context *ctx);
@@ -65,6 +77,8 @@ void				free_number_args(char **args, char **argv);
 size_t				stack_size(t_stack *stack);
 double				calc_disorder(t_stack *a);
 t_stack				*init_stack(char **args);
+void				stack_clear(t_stack **stack);
+int					stack_is_sorted(t_stack *stack);
 void				coordinate_compress(t_stack *stack);
 void				sort_by_strategy(t_context *ctx);
 void				sort_simple(t_context *ctx);
@@ -94,17 +108,18 @@ void				op_rr(t_context *ctx);
 void				op_rra(t_context *ctx);
 void				op_rrb(t_context *ctx);
 void				op_rrr(t_context *ctx);
+int					checker_read_ops(t_context *ctx);
 
 void				sa(t_stack **stack_a, int flg);
 void				sb(t_stack **stack_b, int flg);
-void				ss(t_stack **stack_a, t_stack **stack_b);
-void				pa(t_stack **stack_a, t_stack **stack_b);
-void				pb(t_stack **stack_a, t_stack **stack_b);
+void				ss(t_stack **stack_a, t_stack **stack_b, int flg);
+void				pa(t_stack **stack_a, t_stack **stack_b, int flg);
+void				pb(t_stack **stack_a, t_stack **stack_b, int flg);
 void				ra(t_stack **stack_a, int flg);
 void				rb(t_stack **stack_b, int flg);
-void				rr(t_stack **stack_a, t_stack **stack_b);
+void				rr(t_stack **stack_a, t_stack **stack_b, int flg);
 void				rra(t_stack **stack_a, int flg);
 void				rrb(t_stack **stack_b, int flg);
-void				rrr(t_stack **stack_a, t_stack **stack_b);
+void				rrr(t_stack **stack_a, t_stack **stack_b, int flg);
 
 #endif
