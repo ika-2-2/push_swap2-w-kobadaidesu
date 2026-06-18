@@ -44,7 +44,7 @@ void	sort_by_strategy(t_context *ctx)
 	}
 	else if (ctx->strategy == STRATEGY_COMPLEX)
 	{
-		return ;
+		radix_sort(&ctx->stack_a, &ctx->stack_b);
 	}
 	else
 	{
