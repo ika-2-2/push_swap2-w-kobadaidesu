@@ -6,11 +6,33 @@
 /*   By: ika_eater <ika_eater@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 20:56:05 by ika_eater         #+#    #+#             */
-/*   Updated: 2026/06/18 22:17:35 by ika_eater        ###   ########.fr       */
+/*   Updated: 2026/06/18 22:21:58 by ika_eater        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+// debug
+void	print_stack(t_stack *stack)
+{
+	t_stack	*cur;
+
+	if (!stack)
+	{
+		printf("empty\n");
+		return ;
+	}
+	cur = stack;
+	do
+	{
+		printf("%d(%d) ",
+			cur->value,
+			cur->index);
+		cur = cur->next;
+	}
+	while (cur != stack);
+	printf("\n");
+}
 
 static void	radix_check(t_stack **stack_a, t_stack **stack_b, int size, int bit)
 {
@@ -29,7 +51,7 @@ static void	radix_check(t_stack **stack_a, t_stack **stack_b, int size, int bit)
         pa(stack_a, stack_b);
 }
 
-static int	stack_size(t_stack **stack_a)
+static int	node_cnt(t_stack **stack_a)
 {
 	t_stack	*a;
 	int		size;
@@ -52,12 +74,16 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 	int	size;
     int max_index;
 
-    size = stack_size(stack_a);
+    size = node_cnt(stack_a);
     bit = 0;
     max_index = size - 1;
     while ((max_index >> bit) != 0)
     {
+        printf("before bit = %d\n", bit);
+        print_stack(*stack_a);
         radix_check(stack_a, stack_b, size, bit);
         bit++;
+        printf("after bit = %d\n", bit);
+        print_stack(*stack_a);
     }
 }
