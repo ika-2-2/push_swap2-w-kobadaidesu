@@ -18,7 +18,7 @@ SRCS = daigo_main.c \
 	sort_medium_utils.c \
 	sort_small.c \
 	sort_selection.c \
-	radix.c \
+	sort_complex.c \
 	bench_names.c \
 	bench_print.c \
 	bench_print_utils.c \

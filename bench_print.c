@@ -6,8 +6,14 @@ static void	print_bench_header(t_context *ctx)
 	bench_print_percent(ctx->disorder);
 	bench_putstr_err("[bench] strategy:  ");
 	bench_putstr_err(strategy_name(ctx->strategy));
+	if (ctx->strategy == STRATEGY_ADAPTIVE)
+	{
+		bench_putstr_err(" (");
+		bench_putstr_err(strategy_name(ctx->active_strategy));
+		bench_putstr_err(")");
+	}
 	bench_putstr_err(" / ");
-	bench_putstr_err(strategy_complexity(ctx->strategy));
+	bench_putstr_err(strategy_complexity(ctx->active_strategy));
 	bench_putstr_err("\n");
 	bench_putstr_err("[bench] total_ops:  ");
 	bench_putnbr_err(ctx->bench.total);
