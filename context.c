@@ -29,25 +29,41 @@ void	init_context(t_context *ctx)
 		count++;
 	}
 	ctx->strategy = STRATEGY_ADAPTIVE;
+	ctx->active_strategy = STRATEGY_ADAPTIVE;
 	ctx->disorder = 0.0;
+}
+
+static t_strategy	select_adaptive_strategy(double disorder)
+{
+	if (disorder < 0.2)
+		return (STRATEGY_SIMPLE);
+	if (disorder < 0.5)
+		return (STRATEGY_MEDIUM);
+	return (STRATEGY_COMPLEX);
+}
+
+static t_strategy	select_strategy(t_context *ctx)
+{
+	if (ctx->strategy == STRATEGY_ADAPTIVE)
+		return (select_adaptive_strategy(ctx->disorder));
+	return (ctx->strategy);
 }
 
 void	sort_by_strategy(t_context *ctx)
 {
-	if (ctx->strategy == STRATEGY_SIMPLE)
+	ctx->active_strategy = select_strategy(ctx);
+	if (stack_is_sorted(ctx->stack_a))
+		return ;
+	if (ctx->active_strategy == STRATEGY_SIMPLE)
 	{
 		sort_simple(ctx);
 	}
-	else if (ctx->strategy == STRATEGY_MEDIUM)
+	else if (ctx->active_strategy == STRATEGY_MEDIUM)
 	{
 		sort_medium(ctx);
 	}
-	else if (ctx->strategy == STRATEGY_COMPLEX)
+	else if (ctx->active_strategy == STRATEGY_COMPLEX)
 	{
-		radix_sort(&ctx->stack_a, &ctx->stack_b);
-	}
-	else
-	{
-		return ;
+		sort_complex(ctx);
 	}
 }

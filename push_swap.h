@@ -63,6 +63,7 @@ typedef struct s_context
 	t_stack		*stack_b;
 	t_bench		bench;
 	t_strategy	strategy;
+	t_strategy	active_strategy;
 	double		disorder;
 }	t_context;
 
@@ -83,10 +84,9 @@ void				coordinate_compress(t_stack *stack);
 void				sort_by_strategy(t_context *ctx);
 void				sort_simple(t_context *ctx);
 void				sort_medium(t_context *ctx);
+void				sort_complex(t_context *ctx);
 void				sort_small(t_context *ctx);
 void				sort_selection(t_context *ctx);
-void				radix_sort(t_stack **stack_a, t_stack **stack_b);
-void				print_stack(t_stack *stack);
 size_t				find_min_pos(t_stack *stack);
 void				move_min_to_top(t_context *ctx);
 int					find_pos_in_range(t_stack *stack, int min, int max);
