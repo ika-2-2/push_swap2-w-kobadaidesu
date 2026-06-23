@@ -12,56 +12,43 @@
 
 #include "push_swap.h"
 
-static int	int_sqrt(int n)
+static int	get_chunk_size(int size)
 {
 	int	root;
 
 	root = 1;
-	while (root <= n / root)
-		root++;
-	return (root - 1);
-}
-
-static int	get_chunk_size(int size)
-{
-	if (size <= 50)
-		return (8);
-	if (size <= 100)
-		return (12);
-	if (size <= 500)
-		return (30);
-	return (int_sqrt(size));
-}
-
-static void	push_chunks_to_b(t_context *ctx, int chunk_size)
-{
-	int	min;
-	int	max;
-	int	pos;
-	int	pushed;
-
-	min = 0;
-	max = chunk_size - 1;
-	while (ctx->stack_a)
+	while (root <= size / root)
 	{
-		pos = find_pos_in_range(ctx->stack_a, min, max);
-		if (pos < 0)
-		{
-			min += chunk_size;
-			max += chunk_size;
-		}
-		else
-		{
-			move_a_pos_to_top(ctx, pos);
-			pushed = ctx->stack_a->index;
+		if (root * root >= size)
+			return (root * 2);
+		root++;
+	}
+	return (root * 2);
+}
+
+static int	is_in_range(int index, int min, int max)
+{
+	return (index >= min && index <= max);
+}
+
+static void	push_chunk_to_b(t_context *ctx, int min, int max)
+{
+	int	checked;
+	int	size;
+
+	checked = 0;
+	size = (int)stack_size(ctx->stack_a);
+	while (checked < size)
+	{
+		if (is_in_range(ctx->stack_a->index, min, max))
 			op_pb(ctx);
-			if (pushed < min + (chunk_size / 2))
-				op_rb(ctx);
-		}
+		else
+			op_ra(ctx);
+		checked++;
 	}
 }
 
-static void	push_back_to_a(t_context *ctx)
+static void	push_chunk_back_to_a(t_context *ctx)
 {
 	int	pos;
 
@@ -77,9 +64,21 @@ void	sort_medium(t_context *ctx)
 {
 	int	size;
 	int	chunk_size;
+	int	min;
+	int	max;
 
 	size = (int)stack_size(ctx->stack_a);
+	if (size <= 1)
+		return ;
 	chunk_size = get_chunk_size(size);
-	push_chunks_to_b(ctx, chunk_size);
-	push_back_to_a(ctx);
+	max = size - 1;
+	while (max >= 0)
+	{
+		min = max - chunk_size + 1;
+		if (min < 0)
+			min = 0;
+		push_chunk_to_b(ctx, min, max);
+		push_chunk_back_to_a(ctx);
+		max = min - 1;
+	}
 }
