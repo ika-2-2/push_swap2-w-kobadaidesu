@@ -27,6 +27,33 @@ static int	is_valid_number(char *str)
 	return (1);
 }
 
+static char	*skip_sign_and_zeroes(char *str)
+{
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str == '0' && *(str + 1) != '\0')
+		str++;
+	return (str);
+}
+
+static int	is_int_range(char *str)
+{
+	int		negative;
+	char	*limit;
+
+	negative = (*str == '-');
+	str = skip_sign_and_zeroes(str);
+	if (negative)
+		limit = "2147483648";
+	else
+		limit = "2147483647";
+	if (ft_strlen(str) < ft_strlen(limit))
+		return (1);
+	if (ft_strlen(str) > ft_strlen(limit))
+		return (0);
+	return (ft_strcmp(str, limit) <= 0);
+}
+
 static int	has_duplicate(char **current, long n)
 {
 	char	**compare;
@@ -34,7 +61,8 @@ static int	has_duplicate(char **current, long n)
 	compare = current + 1;
 	while (*compare)
 	{
-		if (n == ft_atol(*compare))
+		if (is_valid_number(*compare) && is_int_range(*compare)
+			&& n == ft_atol(*compare))
 			return (1);
 		compare++;
 	}
@@ -53,9 +81,9 @@ int	has_arg_error(char **args)
 	{
 		if (!is_valid_number(*current))
 			return (1);
-		n = ft_atol(*current);
-		if (n > INT_MAX || n < INT_MIN)
+		if (!is_int_range(*current))
 			return (1);
+		n = ft_atol(*current);
 		if (has_duplicate(current, n))
 			return (1);
 		current++;
