@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   disorder.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dakobaya <dakobaya@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/23 15:50:05 by dakobaya          #+#    #+#             */
+/*   Updated: 2026/06/23 15:50:06 by dakobaya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 size_t	stack_size(t_stack *stack)
@@ -17,10 +29,25 @@ size_t	stack_size(t_stack *stack)
 	return (size);
 }
 
+static int	count_mistakes_from(t_stack *left, int rest)
+{
+	t_stack	*right;
+	int		mistakes;
+
+	right = left->next;
+	mistakes = 0;
+	while (rest--)
+	{
+		if (left->index > right->index)
+			mistakes++;
+		right = right->next;
+	}
+	return (mistakes);
+}
+
 double	calc_disorder(t_stack *stack)
 {
 	t_stack	*left;
-	t_stack	*right;
 	int		size;
 	int		rest;
 	int		mistakes;
@@ -32,17 +59,12 @@ double	calc_disorder(t_stack *stack)
 	pairs = size * (size - 1) / 2;
 	mistakes = 0;
 	left = stack;
-	while (--size)
+	rest = size - 1;
+	while (rest > 0)
 	{
-		rest = size;
-		right = left->next;
-		while (rest--)
-		{
-			if (left->index > right->index)
-				mistakes++;
-			right = right->next;
-		}
+		mistakes += count_mistakes_from(left, rest);
 		left = left->next;
+		rest--;
 	}
 	return ((double)mistakes / (double)pairs);
 }
