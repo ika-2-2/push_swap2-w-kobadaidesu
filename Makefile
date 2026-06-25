@@ -5,7 +5,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
 
-SRCS = daigo_main.c \
+SRCS = main.c \
 	context.c \
 	parse.c \
 	error.c \
