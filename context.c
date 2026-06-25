@@ -51,9 +51,17 @@ static t_strategy	select_strategy(t_context *ctx)
 
 void	sort_by_strategy(t_context *ctx)
 {
+	size_t	size;
+
 	ctx->active_strategy = select_strategy(ctx);
 	if (stack_is_sorted(ctx->stack_a))
 		return ;
+	size = stack_size(ctx->stack_a);
+	if (size <= 5)
+	{
+		sort_small(ctx);
+		return ;
+	}
 	if (ctx->active_strategy == STRATEGY_SIMPLE)
 	{
 		sort_simple(ctx);
