@@ -12,22 +12,25 @@
 
 #include "push_swap.h"
 
+static void	init_bench(t_bench *bench)
+{
+	int	i;
+
+	bench->flag = 0;
+	bench->total = 0;
+	i = 0;
+	while (i < OP_COUNT)
+	{
+		bench->count[i] = 0;
+		i++;
+	}
+}
+
 void	init_context(t_context *ctx)
 {
-	int	*count;
-	int	*end;
-
 	ctx->stack_a = NULL;
 	ctx->stack_b = NULL;
-	ctx->bench.flag = 0;
-	ctx->bench.total = 0;
-	count = ctx->bench.count;
-	end = ctx->bench.count + OP_COUNT;
-	while (count < end)
-	{
-		*count = 0;
-		count++;
-	}
+	init_bench(&ctx->bench);
 	ctx->strategy = STRATEGY_ADAPTIVE;
 	ctx->active_strategy = STRATEGY_ADAPTIVE;
 	ctx->disorder = 0.0;
