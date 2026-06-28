@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-// 順番をローテート(繰り下げ)
 void	rra(t_stack **stack_a, int flg)
 {
 	if (!stack_a || !*stack_a)
@@ -31,7 +30,6 @@ void	rrb(t_stack **stack_b, int flg)
 		write(1, "rrb\n", 4);
 }
 
-// どっちも
 void	rrr(t_stack **stack_a, t_stack **stack_b, int flg)
 {
 	rra(stack_a, 1);

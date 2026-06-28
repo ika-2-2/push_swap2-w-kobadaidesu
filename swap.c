@@ -37,8 +37,6 @@ static void	swap_node(t_stack **stack)
 	*stack = second;
 }
 
-// スタックaの一番上と二番目を入れ替える
-// flgはssの呼び出しかどうか判断
 void	sa(t_stack **stack_a, int flg)
 {
 	if (!stack_a || !*stack_a || (*stack_a)->next == *stack_a)
@@ -57,7 +55,6 @@ void	sb(t_stack **stack_b, int flg)
 		write(1, "sb\n", 3);
 }
 
-// aとbどっちもswap実行
 void	ss(t_stack **stack_a, t_stack **stack_b, int flg)
 {
 	sa(stack_a, 1);
