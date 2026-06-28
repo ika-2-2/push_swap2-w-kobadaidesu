@@ -51,7 +51,6 @@ static void	push_node(t_stack **to_stack, t_stack *node)
 	}
 }
 
-// bの一番上をaの一番上に移動
 void	pa(t_stack **stack_a, t_stack **stack_b, int flg)
 {
 	t_stack	*node;
@@ -64,7 +63,6 @@ void	pa(t_stack **stack_a, t_stack **stack_b, int flg)
 		write(1, "pa\n", 3);
 }
 
-// aの一番上をbの一番上に移動
 void	pb(t_stack **stack_a, t_stack **stack_b, int flg)
 {
 	t_stack	*node;
