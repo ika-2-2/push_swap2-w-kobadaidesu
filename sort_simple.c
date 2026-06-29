@@ -36,6 +36,24 @@ size_t	find_min_pos(t_stack *stack)
 	return (min_pos);
 }
 
+static void	move_a_pos_to_top(t_context *ctx, int pos)
+{
+	int	size;
+
+	size = (int)stack_size(ctx->stack_a);
+	if (pos <= size / 2)
+	{
+		while (pos-- > 0)
+			op_ra(ctx);
+	}
+	else
+	{
+		pos = size - pos;
+		while (pos-- > 0)
+			op_rra(ctx);
+	}
+}
+
 void	move_min_to_top(t_context *ctx)
 {
 	move_a_pos_to_top(ctx, (int)find_min_pos(ctx->stack_a));
