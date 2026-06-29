@@ -12,27 +12,6 @@
 
 #include "push_swap.h"
 
-int	find_pos_in_range(t_stack *stack, int min, int max)
-{
-	int		pos;
-	int		size;
-	t_stack	*current;
-
-	if (!stack)
-		return (-1);
-	pos = 0;
-	size = (int)stack_size(stack);
-	current = stack;
-	while (pos < size)
-	{
-		if (current->index >= min && current->index <= max)
-			return (pos);
-		current = current->next;
-		pos++;
-	}
-	return (-1);
-}
-
 int	find_max_pos(t_stack *stack)
 {
 	int		pos;
@@ -55,24 +34,6 @@ int	find_max_pos(t_stack *stack)
 		pos++;
 	}
 	return (max_pos);
-}
-
-void	move_a_pos_to_top(t_context *ctx, int pos)
-{
-	int	size;
-
-	size = (int)stack_size(ctx->stack_a);
-	if (pos <= size / 2)
-	{
-		while (pos-- > 0)
-			op_ra(ctx);
-	}
-	else
-	{
-		pos = size - pos;
-		while (pos-- > 0)
-			op_rra(ctx);
-	}
 }
 
 void	move_b_pos_to_top(t_context *ctx, int pos)
