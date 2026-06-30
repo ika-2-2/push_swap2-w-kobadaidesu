@@ -84,7 +84,7 @@ char	*get_next_line(int fd)
 	size_t			len;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+		return (ft_clear_state(&state));
 	if (read_to_state(fd, &state) == GNL_ERROR)
 		return (NULL);
 	if (state == NULL || state->len == 0)

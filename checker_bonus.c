@@ -48,6 +48,8 @@ int	main(int argc, char **argv)
 	if (has_arg_error(args))
 		return (checker_error(args, argv + 1, &ctx));
 	ctx.stack_a = init_stack(args);
+	if (!ctx.stack_a)
+		return (checker_error(args, argv + 1, &ctx));
 	coordinate_compress(ctx.stack_a);
 	if (!checker_read_ops(&ctx))
 		return (checker_error(args, argv + 1, &ctx));

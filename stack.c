@@ -80,7 +80,7 @@ t_stack	*init_stack(char **args)
 		if (!new_node)
 		{
 			stack_clear(&stack_a);
-			error_exit();
+			return (NULL);
 		}
 		stack_add_back(&stack_a, new_node);
 		i++;

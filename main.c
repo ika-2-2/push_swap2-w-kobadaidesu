@@ -12,6 +12,14 @@
 
 #include "push_swap.h"
 
+static void	main_error(char **args, char **argv, t_context *ctx)
+{
+	stack_clear(&ctx->stack_a);
+	stack_clear(&ctx->stack_b);
+	free_number_args(args, argv);
+	error_exit();
+}
+
 int	main(int argc, char **argv)
 {
 	t_context	ctx;
@@ -22,8 +30,11 @@ int	main(int argc, char **argv)
 	init_context(&ctx);
 	argv = skip_options(argv + 1, &ctx);
 	args = get_number_args(argv);
-	error_check(args);
+	if (has_arg_error(args))
+		main_error(args, argv, &ctx);
 	ctx.stack_a = init_stack(args);
+	if (!ctx.stack_a)
+		main_error(args, argv, &ctx);
 	coordinate_compress(ctx.stack_a);
 	ctx.disorder = calc_disorder(ctx.stack_a);
 	sort_by_strategy(&ctx);

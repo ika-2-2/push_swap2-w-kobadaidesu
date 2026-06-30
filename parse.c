@@ -57,7 +57,7 @@ void	free_number_args(char **args, char **argv)
 {
 	char	**current;
 
-	if (args == argv)
+	if (!args || args == argv)
 		return ;
 	current = args;
 	while (*current)
