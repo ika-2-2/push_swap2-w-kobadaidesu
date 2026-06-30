@@ -78,6 +78,7 @@ int	checker_read_ops(t_context *ctx)
 			|| !checker_execute_line(line, &ctx->stack_a, &ctx->stack_b))
 		{
 			free(line);
+			get_next_line(-1);
 			return (0);
 		}
 		free(line);
