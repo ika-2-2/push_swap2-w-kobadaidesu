@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   daigo_main.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dakobaya <dakobaya@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 00:00:00 by dakobaya          #+#    #+#             */
-/*   Updated: 2026/06/16 15:45:15 by dakobaya         ###   ########.fr       */
+/*   Updated: 2026/06/30 16:31:23 by dakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ int	main(int argc, char **argv)
 	coordinate_compress(ctx.stack_a);
 	ctx.disorder = calc_disorder(ctx.stack_a);
 	sort_by_strategy(&ctx);
-	if (ctx.bench.flag)
+	if (ctx.bench.total_count_flg)
+	{
+		ft_putnbr_fd(ctx.bench.total, 1);
+		write(1, "\n", 1);
+	}
+	else if (ctx.bench.flag)
 		print_bench(&ctx);
 	stack_clear(&ctx.stack_a);
 	stack_clear(&ctx.stack_b);
