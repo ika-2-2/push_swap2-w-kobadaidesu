@@ -6,7 +6,7 @@
 /*   By: dakobaya <dakobaya@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 23:22:14 by dakobaya          #+#    #+#             */
-/*   Updated: 2026/06/18 23:22:15 by dakobaya         ###   ########.fr       */
+/*   Updated: 2026/07/01 11:02:08 by dakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ int	find_max_pos(t_stack *stack)
 	int		pos;
 	int		max_pos;
 	int		max_index;
+	int		size;
 	t_stack	*current;
 
 	pos = 0;
 	max_pos = 0;
 	max_index = stack->index;
 	current = stack;
-	while (pos < (int)stack_size(stack))
+	size = (int)stack_size(stack);
+	while (pos < size)
 	{
 		if (current->index > max_index)
 		{
