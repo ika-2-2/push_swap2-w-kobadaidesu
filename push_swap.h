@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ika_eater <ika_eater@student.42.fr>        +#+  +:+       +#+        */
+/*   By: dakobaya <dakobaya@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 00:00:00 by dakobaya          #+#    #+#             */
-/*   Updated: 2026/06/18 23:00:22 by ika_eater        ###   ########.fr       */
+/*   Updated: 2026/06/30 16:26:32 by dakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_bench
 {
 	int	flag;
 	int	total;
+	int total_count_flg;
 	int	count[OP_COUNT];
 }	t_bench;
 

@@ -31,7 +31,12 @@ char	**skip_options(char **argv, t_context *ctx)
 {
 	while (*argv)
 	{
-		if (ft_strcmp(*argv, "--bench") == 0)
+		if (ft_strcmp(*argv, "--count") == 0)
+		{
+			ctx->bench.total_count_flg = 1;
+			ctx->bench.flag = 1;
+		}
+		else if (ft_strcmp(*argv, "--bench") == 0)
 			ctx->bench.flag = 1;
 		else if (!parse_strategy(*argv, &ctx->strategy))
 			break ;
